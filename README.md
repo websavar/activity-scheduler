@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+[Online demo](https://activity-scheduler-app.netlify.app/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## OVERVIEW 
+  This is a simple web application which can be used to schedule activities and display weather data for your chosen location.
 
-## Available Scripts
+## REQUIRED FEATURES  
+1. User should be able to schedule a new activity:
+  a. 4 activity types are allowed - Mowing, Fertilisation, Irrigation and Aeration
+  b. Each activity has a date and time associated with it
+  c. Each activity has a “task performer/user” associated with it. These can be John, Tom or Tony.
+  d. Each activity is associated with one of 3 Pitches (Pitch 1, 2 and 3) 
+     and there can only be one activity done on a pitch at one time.
+2. User should be able to change the details of the activities (e.g. change the time)
+3. User should be able to delete the activity
+4. The weather data should show current temperature and have some indication about
+   expected rain/precipitation for the rest of the day. 
+   Use the [https://openweathermap.org/api](https://openweathermap.org/api) API to get weather data
 
-In the project directory, you can run:
 
-### `npm start`
+## Dependencies
+- [tailwindcss](https://tailwindcss.com/): A utility-first CSS framework packed with classes like Bootstrap.
+- [@headlessui/react](https://www.npmjs.com/package/@headlessui/react):A set of completely unstyled, fully 
+  accessible UI components for React, designed to integrate beautifully with Tailwind CSS.
+- [axios](https://github.com/axios/axios): A promise-based HTTP Client for node.js and the browser.
+- [postcss](https://www.npmjs.com/package/postcss): PostCSS is a tool for transforming styles with JS plugins.
+- [autoprefixer](https://github.com/postcss/autoprefixer): The Autoprefixer PostCSS plugin is one of the most popular CSS processors.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Setup and Run
+1. Run `npm install` to install required dependencies
+  (Run `npm install --legacy-peer-deps` in case of facing error)
+2. Run `npm start` to run the project and Open http://localhost:3005
