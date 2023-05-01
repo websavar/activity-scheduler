@@ -4,16 +4,31 @@ import { Pitchs, ActivityTypes, Users } from 'constants';
 import { getTodayDateTime } from 'utils';
 import { DropDown } from 'components';
 
-export default function Activity({ data, removeActivity, editActivity }) {
+export default function Activity({
+  data,
+  removeActivity,
+  editActivity,
+  hasSameTimeAndPitch
+}) {
   const [activity, setActivity] = useState(data);
   const [isEditing, setIsEditing] = useState(false);
+  const [showMessage, setShowMessage] = useState('');
 
   const updateActivityHandle = (itemName, item) => {
+    if (hasSameTimeAndPitch(
+      itemName === 'time' ? item : activity.time,
+      itemName === 'pitch' ? item : activity.pitch,
+      activity.id
+    )) {
+      setShowMessage('This time is already selected for another pitch!');
+      return;
+    }
     setActivity({ ...activity, [itemName]: item });
+    setShowMessage('');
   }
 
   return (
-    <div className="flex place-items-center justify-between p-1">
+    <div className="flex flex-col justify-between p-1">
       <div className={`flex place-items-center h-auto w-full min-w-0 flex-row flex-wrap lg:flex-nowrap 
         ${isEditing && 'bg-gray-50'} p-1 gap-0 lg:gap-3 pb-2 justify-between`}
       >
@@ -62,7 +77,7 @@ export default function Activity({ data, removeActivity, editActivity }) {
               if (isEditing) {
                 editActivity(activity, activity.id);
               }
-              if (activity.time) {
+              if (activity.time && !showMessage) {
                 setIsEditing(!isEditing);
               }
             }}
@@ -78,7 +93,7 @@ export default function Activity({ data, removeActivity, editActivity }) {
           </button>
         </div>
       </div>
+      {showMessage && <span className="text-xs mb-1 pl-1 text-red-600 whitespace-nowrap">{showMessage}</span>}
     </div>
-
   );
 }

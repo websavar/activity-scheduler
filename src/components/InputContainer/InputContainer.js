@@ -15,7 +15,7 @@ const initialValues = {
 const InputContainer = ({ activities, setActivities }) => {
   const [activityInput, setActivityInput] = useState(initialValues);
   const [resetOptions, setResetOptions] = useState(false);
-  const [showMessage, setShowMessage] = useState(false);
+  const [showMessage, setShowMessage] = useState('');
 
   const inputChange = (inputName, inputValue) => {
     setResetOptions(false);
@@ -25,11 +25,20 @@ const InputContainer = ({ activities, setActivities }) => {
     });
   }
 
+  const hasSameTimeAndPitch = (time, pitch) => {
+    return activities.some(activity => activity.time === time && activity.pitch === pitch);
+  }
+
   const addToActivities = () => {
     if (!activityInput.type || !activityInput.time || !activityInput.user || !activityInput.pitch) {
-      setShowMessage(true);
+      setShowMessage('All fields are required!');
       return;
     }
+
+    if (hasSameTimeAndPitch(activityInput.time, activityInput.pitch)) {
+      setShowMessage('This time is already selected for another pitch!');
+      return;
+    };
 
     const activity = {
       ...activityInput,
@@ -38,7 +47,7 @@ const InputContainer = ({ activities, setActivities }) => {
     setActivities([...activities, activity]);
     setActivityInput(initialValues);
     setResetOptions(true);
-    setShowMessage(false);
+    setShowMessage('');
   };
 
   return (
@@ -90,7 +99,7 @@ const InputContainer = ({ activities, setActivities }) => {
 
       <div className="flex flex-col justify-end w-full mb-1 sm:pr-1 sm:basis-1/2 lg:basis-3/12 sm:m-0 lg:p-0">
         {showMessage &&
-          <span className="text-xs mb-1 pl-1 text-red-600">All fields are required!</span>
+          <span className="text-xs mb-1 pl-1 text-red-600 whitespace-nowrap">{showMessage}</span>
         }
         <button
           className="inline-flex items-center justify-center px-4 py-1 h-9 self-end w-full text-center text-sm text-blue-50 bg-primary rounded hover:bg-blue-600"

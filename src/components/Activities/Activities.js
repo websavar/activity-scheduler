@@ -8,8 +8,13 @@ const Activities = ({ activities, setActivities }) => {
     setActivities(newList);
   };
 
+  const hasSameTimeAndPitch = (time, pitch, id) => {
+    return activities.some(activity => activity.time === time && activity.pitch === pitch && activity.id !== id);
+  }
+
   const editActivity = (activityInputs, id) => {
     if (!activityInputs.time) return;
+
     const newList = activities.map((activity) => {
       if (activity.id === id) {
         return {
@@ -35,6 +40,7 @@ const Activities = ({ activities, setActivities }) => {
           data={activity}
           removeActivity={removeActivity}
           editActivity={editActivity}
+          hasSameTimeAndPitch={hasSameTimeAndPitch}
         />
       </Fragment>
     ));
