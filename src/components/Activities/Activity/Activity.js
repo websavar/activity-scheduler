@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { editIcon, saveIcon, deleteIcon } from 'assets/images/svgIcons';
-import { Pitchs, ActivityTypes, Users, todayDateTime } from 'constants';
+import { Pitchs, ActivityTypes, Users } from 'constants';
+import { getTodayDateTime } from 'utils';
 import { DropDown } from 'components';
 
 export default function Activity({ data, removeActivity, editActivity }) {
@@ -30,7 +31,7 @@ export default function Activity({ data, removeActivity, editActivity }) {
           <input disabled={!isEditing} className={`flex flex-grow rounded-md bg-white px-3 py-1.5 text-sm font-semibold text-gray-900 ${isEditing && 'shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50'}`}
             type="datetime-local" id="meeting-time"
             name="meeting-time" value={activity.time}
-            min={todayDateTime}
+            min={getTodayDateTime}
             onChange={(event) => updateActivityHandle('time', event.target.value)}
           />
         </div>

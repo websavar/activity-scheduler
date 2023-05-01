@@ -22,6 +22,12 @@ const Activities = ({ activities, setActivities }) => {
     setActivities(newList);
   };
 
+  if (!activities.length) {
+    return (
+      <div className='text-center text-gray-700 p-3'>No activities are scheduled yet!</div>
+    )
+  }
+
   return (
     activities.map(activity =>
       <Fragment key={activity.id}>

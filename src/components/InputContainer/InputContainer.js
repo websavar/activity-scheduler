@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { nanoid } from "nanoid";
-import { Pitchs, ActivityTypes, Users, todayDateTime } from 'constants';
+import { Pitchs, ActivityTypes, Users } from 'constants';
+import { getTodayDateTime } from 'utils';
 import { DropDown } from 'components';
 
 const initialValues = {
@@ -60,7 +61,7 @@ const InputContainer = ({ activities, setActivities }) => {
           shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50`}
           type="datetime-local" id="meeting-time"
           name="meeting-time" value={activityInput.time}
-          min={todayDateTime}
+          min={getTodayDateTime}
           onChange={(event) => inputChange('time', event.target.value)}
         />
       </div>

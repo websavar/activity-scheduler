@@ -2,7 +2,7 @@ import { LayoutContainer } from 'components';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App h-full">
       <LayoutContainer />
     </div>
   );
